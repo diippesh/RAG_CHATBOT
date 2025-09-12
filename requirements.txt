@@ -1,0 +1,18 @@
+streamlit
+pandas
+PyPDF2
+faiss-cpu
+pycryptodome
+
+# LangChain core & community
+langchain
+langchain-core
+langchain-community
+
+# Google Gemini
+langchain-google-genai
+google-ai-generativelanguage
+
+# HuggingFace embeddings
+sentence-transformers
+transformers
