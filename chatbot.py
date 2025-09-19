@@ -30,7 +30,23 @@ def load_vector_store(index_dir: str = "faiss_index") -> FAISS:
 
 def create_memory() -> ConversationBufferMemory:
     """
-You are a helpful and knowledgeable assistant specializing in the provided document. Your purpose is to answer the user's questions truthfully and concisely, using ONLY the information found in the context.
+        Create a fresh ConversationBufferMemory instance.
+        We use memory_key 'chat_history' and return_messages=False so memory.buffer is a string.
+    """
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=False)
+    return memory
+
+
+def get_qa_chain_with_memory(api_key: str):
+    """
+    Return a QA chain (prompt + model). We'll generate a PromptTemplate that accepts:
+      - context (retrieved docs)
+      - question (user question)
+      - chat_history (string from memory)
+    We'll use load_qa_chain to create the final chain (chain_type='stuff').
+    """
+    prompt_template = """
+    You are a helpful and knowledgeable assistant specializing in the provided document. Your purpose is to answer the user's questions truthfully and concisely, using ONLY the information found in the context.
 
 Follow these strict instructions:
 1. Use the chat history to understand the conversation's context.
@@ -49,33 +65,6 @@ User's Question:
 {question}
 
 Answer:
-"""
-    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=False)
-    return memory
-
-
-def get_qa_chain_with_memory(api_key: str):
-    """
-    Return a QA chain (prompt + model). We'll generate a PromptTemplate that accepts:
-      - context (retrieved docs)
-      - question (user question)
-      - chat_history (string from memory)
-    We'll use load_qa_chain to create the final chain (chain_type='stuff').
-    """
-    prompt_template = """
-    You are an assistant that answers user questions using ONLY the provided context or known memory.
-    If an answer is not present in the provided context or memory, reply: "Answer is not available in the context."
-
-    Memory (user-specific preferences / facts):
-    {chat_history}
-
-    Context (relevant document excerpts):
-    {context}
-
-    User question:
-    {question}
-
-    Answer (be concise and follow any memory instructions like required answer length/style):
     """
 
     prompt = LC_PromptTemplate(

@@ -25,12 +25,11 @@ from chatbot import load_vector_store, get_qa_chain_with_memory, create_memory
 # CONFIG
 INDEX_DIR = "faiss_index"
 QA_DATA_FILE = "data.json" # The JSON file with all synthetic QA pairs
-OUTPUT_FILE = "evaluation_results.json"
+OUTPUT_FILE = "evaluation_results_final.json"
 PDF_PATH = "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf"
 
-# --- HARDCODED API KEY ---
-# GEMINI_API_KEY = "AIzaSyA_SJYdQeC9UUZjG9Np2E3w-ALlbLbgp4U"
-GEMINI_API_KEY = "AIzaSyAujGGeYIjgGD5ZrbYXju232A9vPORneGM"
+
+GEMINI_API_KEY = ""
 
 # --- HELPER FUNCTIONS ---
 
@@ -71,7 +70,8 @@ def get_rag_response(
         chain_type_kwargs={"prompt": QA_PROMPT}
     )
     
-    response = qa_chain({"query": question})
+    # The warning is about using .__call__; .invoke() is the modern method.
+    response = qa_chain.invoke({"query": question})
     
     answer = response.get("result")
     source_documents = response.get("source_documents", [])
@@ -142,8 +142,6 @@ def run_evaluation():
     
     print(f"\nProcessing a new batch of {len(qa_pairs_to_evaluate)} questions.")
 
-    examples = []
-    predicted_answers = []
     eval_records = []
     
     for item in qa_pairs_to_evaluate:
@@ -180,30 +178,60 @@ def run_evaluation():
         
         time.sleep(1)
     
+    print("\nStarting custom LLM-based evaluation...")
+    
+    custom_eval_prompt = PromptTemplate(
+        template="""
+        You are a quality assurance assistant. Your task is to compare a ground truth answer with a predicted answer
+        to a user's question and determine if the predicted answer is correct. The predicted answer does not have
+        to be an exact match, but it must be semantically equivalent and contain all the key information from the
+        ground truth. If the predicted answer is a superset of the ground truth, it is considered correct as long as it
+        contains all the key information.
+
+        Question: {question}
+        Ground truth answer: {ground_truth}
+        Predicted answer: {predicted_answer}
+
+        Based on the above, is the predicted answer correct?
+        Return a single word: "PASS" or "FAIL".
+        """,
+        input_variables=["question", "ground_truth", "predicted_answer"]
+    )
+    
+    custom_graded_outputs = []
     for record in eval_records:
-        examples.append({"query": record["question"], "answer": record["gold_answer"]})
-        predicted_answers.append({"query": record["question"], "result": record["predicted_answer"]})
+        prompt_input = {
+            "question": record["question"],
+            "ground_truth": record["gold_answer"],
+            "predicted_answer": record["predicted_answer"]
+        }
+        
+        # Use .invoke() to get a direct string response
+        raw_output = llm.invoke(custom_eval_prompt.format(**prompt_input))
+        
+        # Parse the output to get a "PASS" or "FAIL" grade
+        grade = "FAIL"
+        if "pass" in raw_output.content.lower():
+            grade = "PASS"
+        
+        custom_graded_outputs.append({
+            "question": record["question"],
+            "ground_truth": record["gold_answer"],
+            "predicted_answer": record["predicted_answer"],
+            "grade": grade
+        })
     
-    print("\nStarting Ragas evaluation...")
+    correct_count = sum(1 for item in custom_graded_outputs if item["grade"] == "PASS")
+    accuracy = correct_count / len(eval_records) if eval_records else 0
     
-    eval_llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0, google_api_key=GEMINI_API_KEY)
-    eval_chain = QAEvalChain.from_llm(llm=eval_llm)
-    
-    graded_outputs = eval_chain.evaluate(examples=examples, predictions=predicted_answers)
-    
-    correct = sum(1 for grade in graded_outputs if "correct" in str(grade["results"]).lower())
-    accuracy = correct / len(eval_records) if eval_records else 0
-    print(f"Accuracy (LLM grading): {accuracy:.2f}")
+    print(f"Accuracy (Custom LLM grading): {accuracy:.2f}")
     
     print("\n--- Detailed Results ---")
-    for g, r in zip(graded_outputs, eval_records):
-        print(f"Question: {r['question']}")
-        print(f"Predicted Answer: {r['predicted_answer']}")
-        print(f"Ground Truth Answer: {r['gold_answer']}")
-        print(f"Ground Truth Page: {r['gold_pages']}")
-        print(f"Cited Pages: {r['cited_pages']}")
-        print(f"Citation Correct: {r['citation_correct']}")
-        print(f"Correct (LLM Grade): {g['results']}")
+    for record in custom_graded_outputs:
+        print(f"Question: {record['question']}")
+        print(f"Predicted Answer: {record['predicted_answer']}")
+        print(f"Ground Truth Answer: {record['ground_truth']}")
+        print(f"Grade: {record['grade']}")
         print("-" * 20)
     
     if "runs" not in existing_data or not isinstance(existing_data["runs"], list):
@@ -212,8 +240,7 @@ def run_evaluation():
     new_run = {
         "timestamp": datetime.now().isoformat(),
         "accuracy": accuracy,
-        "graded_outputs": graded_outputs,
-        "detailed_records": eval_records
+        "detailed_records": custom_graded_outputs
     }
     existing_data["runs"].append(new_run)
     

@@ -75,7 +75,7 @@ def sidebar_info():
 
 def main():
     st.set_page_config(page_title="RAG Chatbot (memory + FAISS)", page_icon=":books:")
-    st.title("RAG Chatbot — Same PDF for all users (in-memory session IDs)")
+    st.title("RAG Chatbot Project")
 
     init_session()
 
