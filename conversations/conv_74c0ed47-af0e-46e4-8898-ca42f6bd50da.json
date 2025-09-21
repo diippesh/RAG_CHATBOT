@@ -1,0 +1,19 @@
+[
+    {
+        "question": "What information is included in the ECG Summary?",
+        "answer": "The ECG Summary includes ECG statistics (heart rates, ventricular and supraventricular beats and arrhythmia events, QT/QTc measurements, maximum ST elevations and depressions, and pace statistics) and typical ECG strips.  It also includes additional notes. (p. 6-36.5)",
+        "timestamp": "2025-09-21 16:08:37",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 39
+            }
+        ]
+    },
+    {
+        "question": "what is email of company contact",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21 16:09:25",
+        "citations": []
+    }
+]

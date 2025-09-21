@@ -1,0 +1,37 @@
+[
+    {
+        "question": "Who is the manufacturer?",
+        "answer": "Shenzhen Mindray Bio-Medical Electronics Co., Ltd.\n\nMindray DS USA, Inc.",
+        "timestamp": "2025-09-21T19:32:55.343111",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 5
+            }
+        ]
+    },
+    {
+        "question": "What is the website for the company",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21T19:33:56.086123",
+        "citations": []
+    },
+    {
+        "question": "website",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21T19:35:27.054361",
+        "citations": []
+    },
+    {
+        "question": "what is E-mail Address",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21T19:36:21.502136",
+        "citations": []
+    },
+    {
+        "question": "what is Address in company contact",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21T19:36:53.184391",
+        "citations": []
+    }
+]

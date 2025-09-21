@@ -1,0 +1,45 @@
+[
+    {
+        "question": "email in company contact",
+        "answer": "service@mindray.com",
+        "timestamp": "2025-09-21T20:21:23.764110",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 5
+            },
+            {
+                "source": "PDF",
+                "page": 6
+            },
+            {
+                "source": "PDF",
+                "page": 9
+            },
+            {
+                "source": "PDF",
+                "page": 17
+            },
+            {
+                "source": "PDF",
+                "page": 49
+            },
+            {
+                "source": "PDF",
+                "page": 50
+            },
+            {
+                "source": "PDF",
+                "page": 63
+            },
+            {
+                "source": "PDF",
+                "page": 68
+            },
+            {
+                "source": "PDF",
+                "page": 88
+            }
+        ]
+    }
+]

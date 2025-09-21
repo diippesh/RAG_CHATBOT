@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-09-21T22:11:14.204789",
+  "accuracy": 0.2,
+  "details": [
+    {
+      "question": "What information is included in the ECG Summary?",
+      "gold_answer": "The ECG Summary provides statistics on heart rates, ventricular beats, supraventricular beats, QT/QTc measurements, maximum ST elevations and depressions, and pace.",
+      "predicted_answer": "I cannot answer from the given information.",
+      "gold_page": 39,
+      "cited_page": null,
+      "citation_correct": null,
+      "grade": "FAIL"
+    },
+    {
+      "question": "What are the four color blocks used to indicate different types of events?",
+      "gold_answer": "The color blocks are red for high priority alarms, yellow for medium priority alarms, cyan for low priority alarms, and green for manual events.",
+      "predicted_answer": "Red, Yellow, Cyan, Green",
+      "gold_page": 42,
+      "cited_page": 42,
+      "citation_correct": true,
+      "grade": "FAIL"
+    },
+    {
+      "question": "How do you view discharged patient information?",
+      "gold_answer": "You access the 'Discharged Patients Management Screen' from the system menu, select the target CentralStation, and then select 'Search' after inputting query criteria to find the desired patient's information and historical data.",
+      "predicted_answer": "To view discharged patient information, follow this procedure: 1. Select the target Central Station from the button in the upper left corner of the discharged patients management screen. 2. Input query criteria. If you need to specify more criteria, select the Filter button and input more criteria. 3. Select the Search button. 4. Select the Detail button in the desired patient information. After selecting this button, you can view the patient information and historical data in the Patient Management tab and Review tab respectively.  For details on patient information review, see 7 Review.",
+      "gold_page": 61,
+      "cited_page": 61,
+      "citation_correct": true,
+      "grade": "FAIL"
+    },
+    {
+      "question": "What does a gray patient category symbol indicate?",
+      "gold_answer": "A gray patient category symbol indicates that the patient's gender has not been specified.",
+      "predicted_answer": "Grey patient category symbol indicates that the gender of the patient is not specified.",
+      "gold_page": 15,
+      "cited_page": 24,
+      "citation_correct": false,
+      "grade": "PASS"
+    },
+    {
+      "question": "What are the two ways to enter the device assignment menu?",
+      "gold_answer": "You can enter the device assignment menu from the system menu by selecting 'System Setup' and then the 'Device Management' tab, or from the main screen by selecting the system menu and then the 'Device Management' tab.",
+      "predicted_answer": "I cannot answer from the given information.",
+      "gold_page": 20,
+      "cited_page": null,
+      "citation_correct": null,
+      "grade": "FAIL"
+    }
+  ]
+}

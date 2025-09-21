@@ -1,0 +1,19 @@
+[
+    {
+        "question": "Who is the manufacturer of the BeneVision Multi Patient Viewer?",
+        "answer": "Bene Vision",
+        "timestamp": "2025-09-21T19:49:18.664620",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 5
+            }
+        ]
+    },
+    {
+        "question": "What is the email address for Shenzhen Mindray Bio-Medical Electronics?",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21T19:49:50.938353",
+        "citations": []
+    }
+]

@@ -1,0 +1,3 @@
+{
+    "buffer": "Human: What information is included in the ECG Summary?\nAI: The ECG Summary includes ECG statistics (heart rates, ventricular and supraventricular beats and arrhythmia events, QT/QTc measurements, maximum ST elevations and depressions, and pace statistics) and typical ECG strips.  It also includes additional notes. (p. 6-36.5)\nHuman: what is email of company contact\nAI: I cannot answer from the given information."
+}

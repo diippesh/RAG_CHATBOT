@@ -1,0 +1,47 @@
+[
+    {
+        "question": "What are the four color blocks used to indicate different types of events?",
+        "answer": "Red indicates high priority alarm events; yellow indicates medium priority alarm events; cyan indicates low priority alarm events; and green indicates manual events (page 2, 7).",
+        "timestamp": "2025-09-21T18:26:45.735795",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 42
+            }
+        ]
+    },
+    {
+        "question": "Who is the manufacturer?",
+        "answer": "Shenzhen Mindray Bio-Medical Electronics Co., Ltd. and Mindray DS USA, Inc.",
+        "timestamp": "2025-09-21T18:28:26.817091",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 5
+            }
+        ]
+    },
+    {
+        "question": "What is the email address for the manufacturer?",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21T18:28:50.100528",
+        "citations": []
+    },
+    {
+        "question": "What is the website for the company?",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21T18:29:28.086271",
+        "citations": []
+    },
+    {
+        "question": "Who is the distributor?",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21T19:20:39.550049",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 5
+            }
+        ]
+    }
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "question": "what is Fax in company contact",
+        "answer": "+86 755 26582680",
+        "timestamp": "2025-09-21T19:57:13.403274",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 5
+            }
+        ]
+    },
+    {
+        "question": "email address in company contact",
+        "answer": "service@mindray.com",
+        "timestamp": "2025-09-21T19:57:35.593267",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 5
+            }
+        ]
+    }
+]

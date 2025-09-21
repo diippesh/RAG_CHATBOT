@@ -1,0 +1,47 @@
+[
+    {
+        "question": "email address in company contact",
+        "answer": "service@mindray.com",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 73
+            }
+        ]
+    },
+    {
+        "question": "tel in company contact",
+        "answer": "Tel : 1.800.288.2121, 1.201.995.8000",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 6
+            }
+        ]
+    },
+    {
+        "question": "Fridericia formula",
+        "answer": "I cannot answer from the given information.",
+        "citations": []
+    },
+    {
+        "question": "what is the formula of hodges in configuring module",
+        "answer": "The Multi Patient Viewer uses the Hodges correction formula by default to correct the QT interval for heart rate.",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 76
+            }
+        ]
+    },
+    {
+        "question": "distributor in company contact",
+        "answer": "Mindray DS USA, Inc.\nAddress :\n800 Mac Arthur Boulevard, Mahwah, New Jersey, 07430 USA\nTel :\n1.800.288.2121, 1.201.995.8000\nWebsite :",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 6
+            }
+        ]
+    }
+]

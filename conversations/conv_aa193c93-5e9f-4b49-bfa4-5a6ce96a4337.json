@@ -1,0 +1,25 @@
+[
+    {
+        "question": "What is the purpose of the 'Review' screen?",
+        "answer": "The Review screen allows you to review historical data for online and discharged patients.  (p. 7)",
+        "timestamp": "2025-09-21 16:35:26",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 41
+            }
+        ]
+    },
+    {
+        "question": "what is email of company contact?",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21 16:35:56",
+        "citations": []
+    },
+    {
+        "question": "what is E-mail Address?",
+        "answer": "I cannot answer from the given information.",
+        "timestamp": "2025-09-21 16:37:30",
+        "citations": []
+    }
+]

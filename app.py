@@ -3,129 +3,139 @@ import pandas as pd
 import base64
 import uuid
 from datetime import datetime
-from pathlib import Path
+import os
+import json
+from dotenv import load_dotenv
 from streamlit_pdf_viewer import pdf_viewer
+from chatbot import load_vector_store, get_hybrid_retriever, create_memory, answer_question
 
-# from your local codebase
-from chatbot import load_vector_store, create_memory, answer_question
+load_dotenv()
 
 # CONFIG
 INDEX_DIR = "faiss_index"
-EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 PDF_FILE_NAME = "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf"
+CONVERSATIONS_DIR = "conversations"
+
+# Custom CSS
+st.markdown("""
+<style>
+    body, .stApp { background-color: #0e1117 !important; color: #e0e0e0; }
+    #MainMenu, footer { visibility: hidden; }
+    .chat-history-container {
+        overflow-y: auto; height: 75vh; padding-bottom: 80px;
+        display: flex; flex-direction: column-reverse;
+    }
+    .sticky-footer-container {
+        position: fixed; bottom: 0; left: 0; width: 100%;
+        background-color: #0e1117; padding: 10px;
+        box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.1); z-index: 1000;
+    }
+    [data-testid="stChatMessage"] {
+        background-color: #262730; border-radius: 15px;
+        padding: 10px 15px; margin: 10px 0;
+    }
+    [data-testid="stTextInput"] > div > div > input {
+        background-color: #262730; color: #e0e0e0;
+        border: 1px solid #4a4d5e;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+@st.cache_resource
+def initialize_retriever():
+    """Loads the vector store and initializes the retriever, caching the result."""
+    try:
+        vector_store = load_vector_store(INDEX_DIR)
+        return get_hybrid_retriever(vector_store)
+    except Exception as e:
+        st.error(f"Failed to initialize retriever: {e}")
+        return None
 
 def init_session():
-    """
-    Initialize session_state keys.
-    """
     if "session_id" not in st.session_state:
         st.session_state.session_id = str(uuid.uuid4())
-    if "conversations" not in st.session_state:
+    
+    os.makedirs(CONVERSATIONS_DIR, exist_ok=True)
+    conv_file = os.path.join(CONVERSATIONS_DIR, f"conv_{st.session_state.session_id}.json")
+
+    if os.path.exists(conv_file):
+        with open(conv_file, 'r', encoding='utf-8') as f:
+            st.session_state.conversations = json.load(f)
+    else:
         st.session_state.conversations = []
+
     if "memories" not in st.session_state:
         st.session_state.memories = create_memory()
-    if "vector_store" not in st.session_state:
-        try:
-            st.session_state.vector_store = load_vector_store(INDEX_DIR)
-        except Exception as e:
-            st.session_state.vector_store = None
-            st.session_state._load_error = str(e)
-    if "pdf_page" not in st.session_state:
-        st.session_state.pdf_page = 1
+        for conv in st.session_state.conversations:
+            st.session_state.memories.save_context({"input": conv["question"]}, {"output": conv["answer"]})
+
+def save_conversation():
+    conv_file = os.path.join(CONVERSATIONS_DIR, f"conv_{st.session_state.session_id}.json")
+    with open(conv_file, 'w', encoding='utf-8') as f:
+        json.dump(st.session_state.conversations, f, indent=4)
 
 def update_pdf_page(page_number):
-    """
-    Callback function to update the PDF page.
-    """
     st.session_state.pdf_page = page_number
+    st.session_state.show_pdf = True
 
 def render_chat_message(user_text: str, bot_text: str, citations):
-    # Display the user's question
     with st.chat_message("user"):
         st.write(user_text)
-
-    # Display the bot's answer
     with st.chat_message("assistant"):
         st.write(bot_text)
-        
-        # Display horizontal citations below the message
         if citations:
-            st.divider()
-            st.caption("Citations:")
-            cols = st.columns(len(citations))
-            for i, c in enumerate(citations):
-                if c.get("page"):
-                    with cols[i]:
-                        st.button(
-                            f"Page {c['page']}",
-                            on_click=update_pdf_page,
-                            args=(c['page'],),
-                            key=f"cite_button_{uuid.uuid4()}"
-                        )
-    # Add a visual separator between messages
-    st.divider()
-
-def sidebar_info():
-    st.sidebar.markdown("## Session")
-    st.sidebar.markdown(f"**Session ID:** `{st.session_state.session_id}`")
-    st.sidebar.caption("Session is auto-generated per browser session. Closing the browser/tab will create a new session ID.")
-    api_key = st.sidebar.text_input("Enter your Google API Key (Gemini):", type="password")
-    st.sidebar.markdown("You must provide a valid Google API Key to use Gemini.")
-    return api_key
+            st.caption("Citation:")
+            # Only render the first citation
+            c = citations[0]
+            if c.get("page"):
+                st.button(f"Page {c['page']}", on_click=update_pdf_page, args=(c['page'],), key=uuid.uuid4())
 
 def main():
-    st.set_page_config(page_title="RAG Chatbot (memory + FAISS)", page_icon=":books:")
-    st.title("RAG Chatbot Project")
+    st.set_page_config(page_title="RAG Chatbot", page_icon="🤖", initial_sidebar_state="collapsed")
+    st.title("RAG Chatbot 🤖")
+
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        st.error("Google API Key not found. Please set the GOOGLE_API_KEY environment variable.")
+        return
+
+    # Initialize retriever once and cache it
+    retriever = initialize_retriever()
+    
+    if retriever is None:
+        st.error("Retriever could not be initialized. Please run build_faiss.py to create the index.")
+        return
 
     init_session()
 
-    api_key = sidebar_info()
+    if st.session_state.get("show_pdf", False):
+        with st.sidebar:
+            st.markdown("### Document Viewer")
+            pdf_viewer(input=PDF_FILE_NAME, scroll_to_page=st.session_state.get("pdf_page", 1), key=f'pdf_viewer_{st.session_state.get("pdf_page", 1)}')
 
-    if st.session_state.vector_store is None:
-        st.error("FAISS index not found or failed to load. Run preprocessing (build_faiss.py) to create the index.")
-        if "_load_error" in st.session_state:
-            st.info(st.session_state._load_error)
-        return
+    # Display chat messages from history
+    for conv in st.session_state.conversations:
+        render_chat_message(conv["question"], conv["answer"], conv["citations"])
 
-    with st.sidebar:
-        st.markdown("---")
-        st.markdown("### Document Viewer")
-        st.caption("Citations will scroll the viewer to the correct page.")
-        pdf_viewer(
-            input=PDF_FILE_NAME,
-            scroll_to_page=st.session_state.pdf_page,
-            key=f'pdf_viewer_{st.session_state.pdf_page}',
-            width=300
-        )
-    
-    with st.form(key="chat_form", clear_on_submit=True):
-        user_input = st.text_input("Your question:", key="user_input")
-        submitted = st.form_submit_button("Send")
-    
-    if submitted and user_input and api_key:
-        with st.spinner("Generating answer..."):
-            db = st.session_state.vector_store
-            memory = st.session_state.memories
-            result = answer_question(user_input, db, memory, api_key, k=3)
+    # User input
+    if user_input := st.chat_input("Ask a question about the document..."):
+        st.session_state.conversations.append({"question": user_input, "answer": "", "citations": []})
+        render_chat_message(user_input, "", [])
+        
+        with st.spinner("Thinking..."):
+            result = answer_question(
+                user_question=user_input,
+                retriever=retriever,
+                memory=st.session_state.memories,
+                api_key=api_key
+            )
             
-            st.session_state.conversations.append({
-                "question": user_input,
-                "answer": result["answer"],
-                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "citations": result["citations"]
-            })
+            # Update the last conversation entry with the result
+            st.session_state.conversations[-1]["answer"] = result["answer"]
+            st.session_state.conversations[-1]["citations"] = result["citations"]
             
-    if st.session_state.conversations:
-        st.markdown("---")
-        st.markdown("### Conversation history (this session)")
-        for conv in reversed(st.session_state.conversations):
-            render_chat_message(conv["question"], conv["answer"], conv["citations"])
-
-    if st.session_state.conversations:
-        df = pd.DataFrame(st.session_state.conversations)
-        csv = df.to_csv(index=False)
-        b64 = base64.b64encode(csv.encode()).decode()
-        st.sidebar.markdown(f'<a href="data:file/csv;base64,{b64}" download="conversation_{st.session_state.session_id}.csv"><button>Download session conversation</button></a>', unsafe_allow_html=True)
+            save_conversation()
+            st.rerun()
 
 if __name__ == "__main__":
     main()

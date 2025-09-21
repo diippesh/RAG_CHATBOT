@@ -1,0 +1,111 @@
+[
+    {
+        "question": "fax in company contact",
+        "answer": "+86 755 26582680",
+        "timestamp": "2025-09-21T20:23:28.324652",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 5
+            },
+            {
+                "source": "PDF",
+                "page": 6
+            },
+            {
+                "source": "PDF",
+                "page": 9
+            },
+            {
+                "source": "PDF",
+                "page": 13
+            },
+            {
+                "source": "PDF",
+                "page": 49
+            },
+            {
+                "source": "PDF",
+                "page": 50
+            },
+            {
+                "source": "PDF",
+                "page": 63
+            },
+            {
+                "source": "PDF",
+                "page": 68
+            }
+        ]
+    },
+    {
+        "question": "hodges formula",
+        "answer": "The Multi Patient Viewer uses the Hodges correction formula by default to correct the QT interval for heart rate.",
+        "timestamp": "2025-09-21T20:23:47.402722",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 1
+            },
+            {
+                "source": "PDF",
+                "page": 30
+            },
+            {
+                "source": "PDF",
+                "page": 56
+            },
+            {
+                "source": "PDF",
+                "page": 68
+            },
+            {
+                "source": "PDF",
+                "page": 76
+            },
+            {
+                "source": "PDF",
+                "page": 85
+            },
+            {
+                "source": "PDF",
+                "page": 86
+            },
+            {
+                "source": "PDF",
+                "page": 88
+            }
+        ]
+    },
+    {
+        "question": " Setting Screen Size in system setup",
+        "answer": "To set the screen size, follow this procedure: 1. On the display setup page, select the Screen tab. 2. Select Screen Size and then select the desired option. If your screen size is not available, select Others and select the  or  button on the rulers to adjust the screen size. 3. Select OK. NOTE \u2022 Restart the system after making a change in the screen size.",
+        "timestamp": "2025-09-21T20:24:53.020351",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 10
+            },
+            {
+                "source": "PDF",
+                "page": 25
+            },
+            {
+                "source": "PDF",
+                "page": 43
+            },
+            {
+                "source": "PDF",
+                "page": 59
+            },
+            {
+                "source": "PDF",
+                "page": 69
+            },
+            {
+                "source": "PDF",
+                "page": 77
+            }
+        ]
+    }
+]

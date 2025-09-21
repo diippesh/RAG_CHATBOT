@@ -17,3 +17,4 @@ google-ai-generativelanguage
 sentence-transformers
 transformers
 ragas
+python-dotenv

@@ -1,0 +1,24 @@
+[
+    {
+        "question": "What is the purpose of the BeneVision Multi Patient Viewer?",
+        "answer": "The BeneVision Multi Patient Viewer is used to view multiple patients connected to the target CentralStation.  It is for remote browsing only and cannot be used to set or control the target CentralStation or the monitoring devices at the target CentralStation (p. 1).",
+        "timestamp": "2025-09-21 15:52:19",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 13
+            }
+        ]
+    },
+    {
+        "question": "What information is included in the ECG Summary?",
+        "answer": "The ECG Summary includes ECG statistics (heart rates, ventricular and supraventricular beats and arrhythmia events, QT/QTc measurements, maximum ST elevations and depressions, and pace statistics) and typical ECG strips.  It may also include additional notes. (p. 6)",
+        "timestamp": "2025-09-21 15:53:32",
+        "citations": [
+            {
+                "source": "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf",
+                "page": 39
+            }
+        ]
+    }
+]
