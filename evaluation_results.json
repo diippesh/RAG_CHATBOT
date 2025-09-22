@@ -1,104 +1,192 @@
-[
-  {
-    "timestamp": "2025-09-22T00:12:09.212513",
-    "accuracy": 0.6,
-    "details": [
-      {
-        "question": "What information does the 'Patient Summary' window display?",
-        "gold_answer": "The Patient Summary window displays the trend data and alarm statistics of selected patients.",
-        "predicted_answer": "The Patient Summary window displays overview information of four patients.  More patients' information can be viewed by moving the cursor or touchscreen.  The example shows overview information of a single patient.",
-        "gold_page": 26,
-        "cited_page": 26,
-        "citation_correct": true,
-        "grade": "FAIL"
-      },
-      {
-        "question": "How do you view discharged patient information?",
-        "gold_answer": "You access the 'Discharged Patients Management Screen' from the system menu, select the target CentralStation, and then select 'Search' after inputting query criteria to find the desired patient's information and historical data.",
-        "predicted_answer": "To view discharged patient information: 1. Select the target Central Station button in the upper left corner of the discharged patients management screen. 2. Input query criteria; use the Filter button for more criteria. 3. Select the Search button. 4. Select the Detail button in the desired patient information.  Patient information is in the Patient Management tab and historical data is in the Review tab.  See Section 7 Review for details on patient information review.",
-        "gold_page": 61,
-        "cited_page": 61,
-        "citation_correct": true,
-        "grade": "FAIL"
-      },
-      {
-        "question": "What information is included in the ECG Summary?",
-        "gold_answer": "The ECG Summary provides statistics on heart rates, ventricular beats, supraventricular beats, QT/QTc measurements, maximum ST elevations and depressions, and pace.",
-        "predicted_answer": "The ECG Summary includes statistics of heart rates, ventricular beats and ventricular arrhythmia events, supraventricular beats and supraventricular arrhythmia events, QT/QTc measurements, maximum ST elevations and depressions, and pace.  It also displays typical ECG strips and notes with additional information.",
-        "gold_page": 39,
-        "cited_page": 39,
-        "citation_correct": true,
-        "grade": "PASS"
-      },
-      {
-        "question": "What is the purpose of the 'Review' screen?",
-        "gold_answer": "The review screen is used to review historical data for both online and discharged patients.",
-        "predicted_answer": "The review screen allows you to review historical data for online and discharged patients.  It uses several tabs to display this data from different aspects; the tabs are the same for both online and discharged patients.  The available review tabs depend on the patient category and patient sector settings.",
-        "gold_page": 41,
-        "cited_page": 41,
-        "citation_correct": true,
-        "grade": "PASS"
-      },
-      {
-        "question": "What does a gray patient category symbol indicate?",
-        "gold_answer": "A gray patient category symbol indicates that the patient's gender has not been specified.",
-        "predicted_answer": "A grey patient category symbol indicates that the gender of the patient is not specified.",
-        "gold_page": 15,
-        "cited_page": 24,
-        "citation_correct": false,
-        "grade": "PASS"
-      }
-    ]
+{
+  "report_generated_at": "2025-09-22T23:19:35.767413",
+  "summary": {
+    "total_unique_questions": 20,
+    "correct_answers": 15,
+    "failed_answers": 5,
+    "overall_accuracy": "75.00%",
+    "citation_accuracy_on_passed_answers": "86.67%"
   },
-  {
-    "timestamp": "2025-09-22T00:13:11.836153",
-    "accuracy": 0.6,
-    "details": [
-      {
-        "question": "How do you view discharged patient information?",
-        "gold_answer": "You access the 'Discharged Patients Management Screen' from the system menu, select the target CentralStation, and then select 'Search' after inputting query criteria to find the desired patient's information and historical data.",
-        "predicted_answer": "To view discharged patient information: 1. Select the target Central Station button in the upper left corner of the discharged patients management screen. 2. Input query criteria; use the Filter button for more criteria. 3. Select the Search button. 4. Select the Detail button in the desired patient information.  Patient information will be in the Patient Management tab and historical data in the Review tab.  For details on patient information review, see Chapter 7 Review.",
-        "gold_page": 61,
-        "cited_page": 61,
-        "citation_correct": true,
-        "grade": "FAIL"
-      },
-      {
-        "question": "What information does the 'Patient Summary' window display?",
-        "gold_answer": "The Patient Summary window displays the trend data and alarm statistics of selected patients.",
-        "predicted_answer": "The Patient Summary window displays overview information of four patients.  More patients' information can be viewed by moving the cursor or touchscreen.  The example shows overview information of a single patient.",
-        "gold_page": 26,
-        "cited_page": 26,
-        "citation_correct": true,
-        "grade": "FAIL"
-      },
-      {
-        "question": "What is the purpose of the 'Review' screen?",
-        "gold_answer": "The review screen is used to review historical data for both online and discharged patients.",
-        "predicted_answer": "The review screen allows you to review historical data for online and discharged patients.  It uses several tabs to display this data from different aspects; the tabs are the same for both online and discharged patients.  The available review tabs depend on the patient category and patient sector settings.",
-        "gold_page": 41,
-        "cited_page": 41,
-        "citation_correct": true,
-        "grade": "PASS"
-      },
-      {
-        "question": "What are the two clinical assistive applications (CAA) provided?",
-        "gold_answer": "The provided clinical assistive applications are Early Warning Score (EWS) and SepsisSight\u2122.",
-        "predicted_answer": "The two Clinical Assistive Applications (CAA) provided are EWS (Early Warning Score) and Sepsis Sight.",
-        "gold_page": 35,
-        "cited_page": 35,
-        "citation_correct": true,
-        "grade": "PASS"
-      },
-      {
-        "question": "What does the symbol '...' indicate in the alarm information area?",
-        "gold_answer": "The ellipsis symbol '...' indicates that there is more than one alarm message.",
-        "predicted_answer": "The ellipsis symbol \u201c...\u201d indicates that there are more than one alarm message.",
-        "gold_page": 24,
-        "cited_page": 24,
-        "citation_correct": true,
-        "grade": "PASS"
-      }
-    ]
-  }
-]
+  "details": [
+    {
+      "question": "What information does the 'Patient Summary' window display?",
+      "gold_answer": "The Patient Summary window displays the trend data and alarm statistics of selected patients.",
+      "predicted_answer": "The Patient Summary window displays overview information of four patients.  More patients' information can be viewed by moving the cursor or touchscreen.  The example shows overview information of a single patient.",
+      "gold_page": 26,
+      "cited_page": 26,
+      "citation_correct": true,
+      "grade": "FAIL"
+    },
+    {
+      "question": "How do you view discharged patient information?",
+      "gold_answer": "You access the 'Discharged Patients Management Screen' from the system menu, select the target CentralStation, and then select 'Search' after inputting query criteria to find the desired patient's information and historical data.",
+      "predicted_answer": "To view discharged patient information: 1. Select the target Central Station button in the upper left corner of the discharged patients management screen. 2. Input query criteria; use the Filter button for more criteria. 3. Select the Search button. 4. Select the Detail button in the desired patient information.  Patient information will be in the Patient Management tab and historical data in the Review tab.  For details on patient information review, see Chapter 7 Review.",
+      "gold_page": 61,
+      "cited_page": 61,
+      "citation_correct": true,
+      "grade": "FAIL"
+    },
+    {
+      "question": "What information is included in the ECG Summary?",
+      "gold_answer": "The ECG Summary provides statistics on heart rates, ventricular beats, supraventricular beats, QT/QTc measurements, maximum ST elevations and depressions, and pace.",
+      "predicted_answer": "The ECG Summary includes statistics of heart rates, ventricular beats and ventricular arrhythmia events, supraventricular beats and supraventricular arrhythmia events, QT/QTc measurements, maximum ST elevations and depressions, and pace.  It also displays typical ECG strips and notes with additional information.",
+      "gold_page": 39,
+      "cited_page": 39,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What is the purpose of the 'Review' screen?",
+      "gold_answer": "The review screen is used to review historical data for both online and discharged patients.",
+      "predicted_answer": "The review screen allows you to review historical data for online and discharged patients.  It uses several tabs to display this data from different aspects; the tabs are the same for both online and discharged patients.  The available review tabs depend on the patient category and patient sector settings.",
+      "gold_page": 41,
+      "cited_page": 41,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What does a gray patient category symbol indicate?",
+      "gold_answer": "A gray patient category symbol indicates that the patient's gender has not been specified.",
+      "predicted_answer": "A grey patient category symbol indicates that the gender of the patient is not specified.",
+      "gold_page": 15,
+      "cited_page": 24,
+      "citation_correct": false,
+      "grade": "PASS"
+    },
+    {
+      "question": "What are the two clinical assistive applications (CAA) provided?",
+      "gold_answer": "The provided clinical assistive applications are Early Warning Score (EWS) and SepsisSight\u2122.",
+      "predicted_answer": "The two Clinical Assistive Applications (CAA) provided are EWS (Early Warning Score) and Sepsis Sight.",
+      "gold_page": 35,
+      "cited_page": 35,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What does the symbol '...' indicate in the alarm information area?",
+      "gold_answer": "The ellipsis symbol '...' indicates that there is more than one alarm message.",
+      "predicted_answer": "The ellipsis symbol \u201c...\u201d indicates that there are more than one alarm message.",
+      "gold_page": 24,
+      "cited_page": 24,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "How do you manually admit a device to a patient sector that is not bound?",
+      "gold_answer": "You can select the patient sector with the '+' symbol on the Multibed screen to enter the device assignment menu.",
+      "predicted_answer": "To manually admit a device without binding it to a patient sector, follow steps 1-5 in section 3.1.2.2 (page 3-2).  Do not specify a patient sector in step 4; the device will then be assigned to an idle sector in order from left to right and top to bottom.  Alternatively, using the second or third methods described in section 3.1.2.1 (page 3-2) to access the device assignment menu will also result in an unbound device and sector.",
+      "gold_page": 20,
+      "cited_page": 19,
+      "citation_correct": false,
+      "grade": "FAIL"
+    },
+    {
+      "question": "How do you access the 'ViewBed' screen?",
+      "gold_answer": "You can access the ViewBed screen by selecting the parameter area or waveform area in the desired patient sector on the multibed screen.",
+      "predicted_answer": "This question cannot be answered from the given context.",
+      "gold_page": 29,
+      "cited_page": 31,
+      "citation_correct": false,
+      "grade": "FAIL"
+    },
+    {
+      "question": "What is the default setting for the 'Auto Close ViewBed Screen' function?",
+      "gold_answer": "The default setting is 'Never'.",
+      "predicted_answer": "The default setting for \"Auto Close View Bed Screen\" is \"Never\". (page 11-1)",
+      "gold_page": 70,
+      "cited_page": 70,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What are the four color blocks used to indicate different types of events?",
+      "gold_answer": "The color blocks are red for high priority alarms, yellow for medium priority alarms, cyan for low priority alarms, and green for manual events.",
+      "predicted_answer": "Red indicates high priority alarm events; yellow indicates medium priority alarm events; cyan indicates low priority alarm events; and green indicates manual events (page 7-2, 7-14).",
+      "gold_page": 42,
+      "cited_page": 42,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What is the purpose of the BeneVision Multi Patient Viewer?",
+      "gold_answer": "The BeneVision Multi Patient Viewer is part of the BeneVision Central Monitoring System (CMS) and is used to view multiple patients connected to a CentralStation.",
+      "predicted_answer": "The BeneVision Multi Patient Viewer is part of the BeneVision Central Monitoring System (CMS) and is used to view multiple patients connected to the target Central Station.  It is for remote browsing only and cannot be used to set or control the target Central Station or the monitoring devices at the target Central Station (p. 1).",
+      "gold_page": 13,
+      "cited_page": 13,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "How do you view system information on the Multi Patient Viewer?",
+      "gold_answer": "From the system menu area in the upper left corner of the screen, select 'System Information' from the drop-down list.",
+      "predicted_answer": "To view system information, select the system menu area in the upper left corner of the screen, then select System Information from the drop-down list. (p. 2)",
+      "gold_page": 18,
+      "cited_page": 18,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What should you do if the battery of a device has critically low charge?",
+      "gold_answer": "The battery needs to be charged or changed immediately to prevent the device from shutting down.",
+      "predicted_answer": "The device needs to be charged or changed immediately; otherwise, it will shut down (page 2).",
+      "gold_page": 16,
+      "cited_page": 16,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "Can the Multi Patient Viewer be used to control or set monitoring devices?",
+      "gold_answer": "No, it is for remote browsing only and cannot be used to set or control the target CentralStation or its monitoring devices.",
+      "predicted_answer": "No, the Multi Patient Viewer is for remote browsing only and cannot be used to set or control the target Central Station or the monitoring devices at the target Central Station (p. 1).",
+      "gold_page": 13,
+      "cited_page": 13,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What is the purpose of the 'Freeze' quick key?",
+      "gold_answer": "The 'Freeze' quick key is used to freeze waveforms on the ViewBed screen for closer review of the data.",
+      "predicted_answer": "The 'Freeze' quick key freezes waveforms on the View Bed screen to allow closer review of the waveform data (5.4.4.1).",
+      "gold_page": 33,
+      "cited_page": 30,
+      "citation_correct": false,
+      "grade": "PASS"
+    },
+    {
+      "question": "How many monitoring devices can one Multi Patient Viewer support?",
+      "gold_answer": "One Multi Patient Viewer can support a maximum of 36 monitoring devices.",
+      "predicted_answer": "One Multi Patient Viewer supports a maximum of 36 monitoring devices (p. 1).",
+      "gold_page": 13,
+      "cited_page": 13,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What are the two ways to enter the device assignment menu?",
+      "gold_answer": "You can enter the device assignment menu from the system menu by selecting 'System Setup' and then the 'Device Management' tab, or from the main screen by selecting the system menu and then the 'Device Management' tab.",
+      "predicted_answer": "To enter the device assignment menu, you can: 1) Go to the System Setup menu, select the Device Management tab, enter the required password, and select the OK button; or 2) Select the Device Assignment tab to access the device assignment screen. (page 3)",
+      "gold_page": 20,
+      "cited_page": 20,
+      "citation_correct": true,
+      "grade": "FAIL"
+    },
+    {
+      "question": "What is the function of a horizontal caliper in the detail waveform window?",
+      "gold_answer": "Horizontal calipers can be used to measure PR, QRS, QT, and R-R waveform intervals.",
+      "predicted_answer": "In the detail waveform window, a horizontal caliper measures the PR, QRS, QT, and R-R waveform intervals. (p. 7-9)",
+      "gold_page": 49,
+      "cited_page": 49,
+      "citation_correct": true,
+      "grade": "PASS"
+    },
+    {
+      "question": "What does the aEEG with EEG display option show?",
+      "gold_answer": "It is the default option and displays up to four aEEG waveforms and up to four EEG waveforms in the first and second half of the page, respectively.",
+      "predicted_answer": "The aEEG with EEG display option shows up to four aEEG waveforms and up to four EEG waveforms in the first and second halves of the page.  You can also set the scale and speed for both the aEEG and EEG waveforms (7.13.2).",
+      "gold_page": 59,
+      "cited_page": 59,
+      "citation_correct": true,
+      "grade": "PASS"
+    }
+  ]
+}
