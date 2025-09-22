@@ -36,13 +36,37 @@ def run_evaluation():
     with open(QA_DATA_FILE, "r", encoding="utf-8") as f:
         all_qa_pairs = json.load(f)
     
-    print(f"Loaded {len(all_qa_pairs)} QA pairs from {QA_DATA_FILE}.")
+    print(f"Loaded {len(all_qa_pairs)} total QA pairs from {QA_DATA_FILE}.")
+
+    # **MODIFIED**: Logic to track and filter out already evaluated questions
+    evaluated_questions = set()
+    try:
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            existing_runs = json.load(f)
+        for run in existing_runs:
+            for detail in run.get("details", []):
+                evaluated_questions.add(detail["question"])
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass # It's okay if the file doesn't exist or is empty
+
+    print(f"Found {len(evaluated_questions)} previously evaluated questions.")
+    
+    unevaluated_pairs = [
+        pair for pair in all_qa_pairs 
+        if pair["question"] not in evaluated_questions
+    ]
+    
+    if not unevaluated_pairs:
+        print("\nAll available questions have been evaluated. Nothing new to process.")
+        print(f"To start over, you can delete the '{OUTPUT_FILE}' file.")
+        return
 
     batch_size = 5
-    sample_size = min(len(all_qa_pairs), batch_size)
-    qa_pairs_to_evaluate = random.sample(all_qa_pairs, sample_size)
+    sample_size = min(len(unevaluated_pairs), batch_size)
+    # Select a random batch from only the UNEVALUATED questions
+    qa_pairs_to_evaluate = random.sample(unevaluated_pairs, sample_size)
     
-    print(f"\nProcessing a random batch of {len(qa_pairs_to_evaluate)} questions.")
+    print(f"\nProcessing a new, unique random batch of {len(qa_pairs_to_evaluate)} questions.")
     eval_records = []
     
     for item in qa_pairs_to_evaluate:
@@ -67,16 +91,15 @@ def run_evaluation():
         })
         time.sleep(1)
     
-    # **MODIFIED**: This prompt is much more robust and focuses on semantic meaning.
     custom_eval_prompt = PromptTemplate(
         template="""You are an impartial AI evaluator. Your task is to assess whether the "Predicted Answer" correctly and accurately answers the "Question" based on the "Ground Truth Answer".
 
         RULES FOR EVALUATION:
-        1.  **Focus on Factual Core:** The Predicted Answer must contain the key facts and essential information present in the Ground Truth Answer. It does not need to be a word-for-word match.
-        2.  **Semantic Equivalence:** The meaning of the Predicted Answer must be the same as the Ground Truth.
-        3.  **Graceful Failures:** If the Predicted Answer is "I cannot answer from the given information," this is a "FAIL" unless the Ground Truth also indicates the information is not available.
-        4.  **Supersets are Acceptable:** If the Predicted Answer contains all the information from the Ground Truth plus some extra, relevant details from the source document, it should be considered a "PASS".
-        5.  **Ignore Minor Differences:** Do not fail an answer for trivial differences in formatting, phrasing, or punctuation.
+        1.  Focus on Factual Core: The Predicted Answer must contain the key facts and essential information present in the Ground Truth Answer. It does not need to be a word-for-word match.
+        2.  Semantic Equivalence: The meaning of the Predicted Answer must be the same as the Ground Truth.
+        3.  Graceful Failures: If the Predicted Answer is "I cannot answer from the given information," this is a "FAIL" unless the Ground Truth also indicates the information is not available.
+        4.  Supersets are Acceptable: If the Predicted Answer contains all the information from the Ground Truth plus some extra, relevant details, it should be considered a "PASS".
+        5.  Ignore Minor Differences: Do not fail an answer for trivial differences in formatting or punctuation.
 
         Here is the data to evaluate:
         - Question: "{question}"
@@ -96,13 +119,11 @@ def run_evaluation():
 
     correct_count = sum(1 for item in eval_records if item["grade"] == "PASS")
     accuracy = correct_count / len(eval_records) if eval_records else 0
-    print(f"\nBatch Accuracy (with improved grading): {accuracy:.2f}")
+    print(f"\nBatch Accuracy: {accuracy:.2f}")
 
     try:
         with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
             existing_results = json.load(f)
-        if not isinstance(existing_results, list): # Handle case where file is not a list
-            existing_results = []
     except (FileNotFoundError, json.JSONDecodeError):
         existing_results = []
 
