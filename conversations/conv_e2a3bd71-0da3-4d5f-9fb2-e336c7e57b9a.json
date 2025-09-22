@@ -1,0 +1,42 @@
+[
+    {
+        "question": "what is website of company contact?",
+        "answer": "www.mindray.com (page III)",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 5
+            }
+        ]
+    },
+    {
+        "question": "what is email of company contact?",
+        "answer": "service@mindray.com (page III)",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 5
+            }
+        ]
+    },
+    {
+        "question": "fax number company contact?",
+        "answer": "+86 755 26582680 (page III)",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 5
+            }
+        ]
+    },
+    {
+        "question": "What information is included in the ECG Summary?",
+        "answer": "The ECG Summary provides ECG statistics of the patient and displays the patient\u2019s typical ECG strips. (page 6-3)",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 39
+            }
+        ]
+    }
+]

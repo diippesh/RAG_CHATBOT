@@ -1,51 +1,104 @@
-{
-  "timestamp": "2025-09-21T22:11:14.204789",
-  "accuracy": 0.2,
-  "details": [
-    {
-      "question": "What information is included in the ECG Summary?",
-      "gold_answer": "The ECG Summary provides statistics on heart rates, ventricular beats, supraventricular beats, QT/QTc measurements, maximum ST elevations and depressions, and pace.",
-      "predicted_answer": "I cannot answer from the given information.",
-      "gold_page": 39,
-      "cited_page": null,
-      "citation_correct": null,
-      "grade": "FAIL"
-    },
-    {
-      "question": "What are the four color blocks used to indicate different types of events?",
-      "gold_answer": "The color blocks are red for high priority alarms, yellow for medium priority alarms, cyan for low priority alarms, and green for manual events.",
-      "predicted_answer": "Red, Yellow, Cyan, Green",
-      "gold_page": 42,
-      "cited_page": 42,
-      "citation_correct": true,
-      "grade": "FAIL"
-    },
-    {
-      "question": "How do you view discharged patient information?",
-      "gold_answer": "You access the 'Discharged Patients Management Screen' from the system menu, select the target CentralStation, and then select 'Search' after inputting query criteria to find the desired patient's information and historical data.",
-      "predicted_answer": "To view discharged patient information, follow this procedure: 1. Select the target Central Station from the button in the upper left corner of the discharged patients management screen. 2. Input query criteria. If you need to specify more criteria, select the Filter button and input more criteria. 3. Select the Search button. 4. Select the Detail button in the desired patient information. After selecting this button, you can view the patient information and historical data in the Patient Management tab and Review tab respectively.  For details on patient information review, see 7 Review.",
-      "gold_page": 61,
-      "cited_page": 61,
-      "citation_correct": true,
-      "grade": "FAIL"
-    },
-    {
-      "question": "What does a gray patient category symbol indicate?",
-      "gold_answer": "A gray patient category symbol indicates that the patient's gender has not been specified.",
-      "predicted_answer": "Grey patient category symbol indicates that the gender of the patient is not specified.",
-      "gold_page": 15,
-      "cited_page": 24,
-      "citation_correct": false,
-      "grade": "PASS"
-    },
-    {
-      "question": "What are the two ways to enter the device assignment menu?",
-      "gold_answer": "You can enter the device assignment menu from the system menu by selecting 'System Setup' and then the 'Device Management' tab, or from the main screen by selecting the system menu and then the 'Device Management' tab.",
-      "predicted_answer": "I cannot answer from the given information.",
-      "gold_page": 20,
-      "cited_page": null,
-      "citation_correct": null,
-      "grade": "FAIL"
-    }
-  ]
-}
+[
+  {
+    "timestamp": "2025-09-22T00:12:09.212513",
+    "accuracy": 0.6,
+    "details": [
+      {
+        "question": "What information does the 'Patient Summary' window display?",
+        "gold_answer": "The Patient Summary window displays the trend data and alarm statistics of selected patients.",
+        "predicted_answer": "The Patient Summary window displays overview information of four patients.  More patients' information can be viewed by moving the cursor or touchscreen.  The example shows overview information of a single patient.",
+        "gold_page": 26,
+        "cited_page": 26,
+        "citation_correct": true,
+        "grade": "FAIL"
+      },
+      {
+        "question": "How do you view discharged patient information?",
+        "gold_answer": "You access the 'Discharged Patients Management Screen' from the system menu, select the target CentralStation, and then select 'Search' after inputting query criteria to find the desired patient's information and historical data.",
+        "predicted_answer": "To view discharged patient information: 1. Select the target Central Station button in the upper left corner of the discharged patients management screen. 2. Input query criteria; use the Filter button for more criteria. 3. Select the Search button. 4. Select the Detail button in the desired patient information.  Patient information is in the Patient Management tab and historical data is in the Review tab.  See Section 7 Review for details on patient information review.",
+        "gold_page": 61,
+        "cited_page": 61,
+        "citation_correct": true,
+        "grade": "FAIL"
+      },
+      {
+        "question": "What information is included in the ECG Summary?",
+        "gold_answer": "The ECG Summary provides statistics on heart rates, ventricular beats, supraventricular beats, QT/QTc measurements, maximum ST elevations and depressions, and pace.",
+        "predicted_answer": "The ECG Summary includes statistics of heart rates, ventricular beats and ventricular arrhythmia events, supraventricular beats and supraventricular arrhythmia events, QT/QTc measurements, maximum ST elevations and depressions, and pace.  It also displays typical ECG strips and notes with additional information.",
+        "gold_page": 39,
+        "cited_page": 39,
+        "citation_correct": true,
+        "grade": "PASS"
+      },
+      {
+        "question": "What is the purpose of the 'Review' screen?",
+        "gold_answer": "The review screen is used to review historical data for both online and discharged patients.",
+        "predicted_answer": "The review screen allows you to review historical data for online and discharged patients.  It uses several tabs to display this data from different aspects; the tabs are the same for both online and discharged patients.  The available review tabs depend on the patient category and patient sector settings.",
+        "gold_page": 41,
+        "cited_page": 41,
+        "citation_correct": true,
+        "grade": "PASS"
+      },
+      {
+        "question": "What does a gray patient category symbol indicate?",
+        "gold_answer": "A gray patient category symbol indicates that the patient's gender has not been specified.",
+        "predicted_answer": "A grey patient category symbol indicates that the gender of the patient is not specified.",
+        "gold_page": 15,
+        "cited_page": 24,
+        "citation_correct": false,
+        "grade": "PASS"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-09-22T00:13:11.836153",
+    "accuracy": 0.6,
+    "details": [
+      {
+        "question": "How do you view discharged patient information?",
+        "gold_answer": "You access the 'Discharged Patients Management Screen' from the system menu, select the target CentralStation, and then select 'Search' after inputting query criteria to find the desired patient's information and historical data.",
+        "predicted_answer": "To view discharged patient information: 1. Select the target Central Station button in the upper left corner of the discharged patients management screen. 2. Input query criteria; use the Filter button for more criteria. 3. Select the Search button. 4. Select the Detail button in the desired patient information.  Patient information will be in the Patient Management tab and historical data in the Review tab.  For details on patient information review, see Chapter 7 Review.",
+        "gold_page": 61,
+        "cited_page": 61,
+        "citation_correct": true,
+        "grade": "FAIL"
+      },
+      {
+        "question": "What information does the 'Patient Summary' window display?",
+        "gold_answer": "The Patient Summary window displays the trend data and alarm statistics of selected patients.",
+        "predicted_answer": "The Patient Summary window displays overview information of four patients.  More patients' information can be viewed by moving the cursor or touchscreen.  The example shows overview information of a single patient.",
+        "gold_page": 26,
+        "cited_page": 26,
+        "citation_correct": true,
+        "grade": "FAIL"
+      },
+      {
+        "question": "What is the purpose of the 'Review' screen?",
+        "gold_answer": "The review screen is used to review historical data for both online and discharged patients.",
+        "predicted_answer": "The review screen allows you to review historical data for online and discharged patients.  It uses several tabs to display this data from different aspects; the tabs are the same for both online and discharged patients.  The available review tabs depend on the patient category and patient sector settings.",
+        "gold_page": 41,
+        "cited_page": 41,
+        "citation_correct": true,
+        "grade": "PASS"
+      },
+      {
+        "question": "What are the two clinical assistive applications (CAA) provided?",
+        "gold_answer": "The provided clinical assistive applications are Early Warning Score (EWS) and SepsisSight\u2122.",
+        "predicted_answer": "The two Clinical Assistive Applications (CAA) provided are EWS (Early Warning Score) and Sepsis Sight.",
+        "gold_page": 35,
+        "cited_page": 35,
+        "citation_correct": true,
+        "grade": "PASS"
+      },
+      {
+        "question": "What does the symbol '...' indicate in the alarm information area?",
+        "gold_answer": "The ellipsis symbol '...' indicates that there is more than one alarm message.",
+        "predicted_answer": "The ellipsis symbol \u201c...\u201d indicates that there are more than one alarm message.",
+        "gold_page": 24,
+        "cited_page": 24,
+        "citation_correct": true,
+        "grade": "PASS"
+      }
+    ]
+  }
+]

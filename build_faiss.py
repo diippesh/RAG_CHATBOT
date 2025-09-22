@@ -11,8 +11,8 @@ from langchain.docstore.document import Document
 PDF_PATH = "H-046-021282-00_BeneVision_Multi_Patient_Viewer_Operators_Manual(FDA)-5.0.pdf"
 INDEX_DIR = "faiss_index"
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-CHUNK_SIZE = 500
-CHUNK_OVERLAP = 100
+CHUNK_SIZE = 1000
+CHUNK_OVERLAP = 150
 # ----------------
 
 def clean_text(text: str) -> str:
@@ -44,8 +44,7 @@ def build_faiss(pdf_path=PDF_PATH, index_dir=INDEX_DIR):
     doc.close()
     
     if not docs_to_embed:
-        print("No documents were generated to embed. Check the PDF path and content.")
-        return
+        raise ValueError("No documents were generated to embed. Check the PDF path and content.")
 
     print(f"Total chunks: {len(docs_to_embed)} — generating embeddings...")
     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)

@@ -1,0 +1,22 @@
+[
+    {
+        "question": "What is the formula for Hodges?",
+        "answer": "The provided text does not give the formula for Hodges, only that it is the default QTc correction formula used by the Multi Patient Viewer (page 10.9.3).",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 76
+            }
+        ]
+    },
+    {
+        "question": "How do you view discharged patient information?",
+        "answer": "To view discharged patient information, first select the target Central Station from the button in the upper left corner of the discharged patients management screen (page 8.2).  Then, input query criteria (using the Filter button for more criteria if needed) and select the Search button (page 8.2). Finally, select the Detail button in the desired patient information to view the patient information and historical data in the Patient Management and Review tabs respectively (page 8.2).",
+        "citations": [
+            {
+                "source": "PDF",
+                "page": 61
+            }
+        ]
+    }
+]
